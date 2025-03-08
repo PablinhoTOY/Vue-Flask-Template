@@ -5,10 +5,8 @@ from flask_mail import Message
 from app.modules.utils import processCorreo
 import requests
 
-def enviar_factura_correo_asincrono(cedula, subject, html):
+def enviar_correo_asincrono(correo, subject, html):
     with app.app_context():
-        correo = requests.post('https://digital.utp.ac.pa:8080/estudiantes/cedula-a-correo', json={'cedula': cedula}).text
-        correo = processCorreo(correo)
         msg = Message()
         msg.subject = subject
         msg.recipients = [correo]
@@ -16,6 +14,6 @@ def enviar_factura_correo_asincrono(cedula, subject, html):
         # Envía el correo
         mail.send(msg)
         
-def enviar_factura_correo(cedula, subject, html):
-    thread = threading.Thread(target=enviar_factura_correo_asincrono, args=(cedula, subject, html))
+def enviar_correo(correo, subject, html):
+    thread = threading.Thread(target=enviar_correo_asincrono, args=(correo, subject, html))
     thread.start()

@@ -8,6 +8,6 @@ from app.Controllers import (
 )
 
 @app.route("/", methods=["GET"])
-def Kiosko():
-    result = users.PruebaKiosko()
+def Prueba():
+    result = users.Prueba()
     return result.jsonify()

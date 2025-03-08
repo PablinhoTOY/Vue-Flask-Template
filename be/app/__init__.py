@@ -28,7 +28,7 @@ dotenv_path = os.path.join(APP_ROOT, ".env")
 load_dotenv(dotenv_path)
 
 app = Flask(__name__)
-enviroment = config["development"]
+enviroment = config["config"]
 app.config.from_object(enviroment)
 
 db = SQLAlchemy(app)

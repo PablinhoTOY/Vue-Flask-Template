@@ -1,42 +1,44 @@
-<script setup>
-import { ref } from 'vue'
-
-defineProps({
-  msg: String,
-})
-
-const count = ref(0)
-</script>
-
 <template>
-  <h1>{{ msg }}</h1>
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
-  </div>
+  <v-card height="100vh" class="d-flex flex-column justify-content-center align-center gap-4" color="transparent" flat>
+    <div>
+      <a href="https://vite.dev" target="_blank">
+        <img src="/vite.svg" class="logo-custom" alt="Vite logo-custom" />
+      </a>
+      <a href="https://vuejs.org/" target="_blank">
+        <img src="../assets/vue.svg" class="logo-custom vue" alt="Vue logo-custom" />
+      </a>
+      <a href="https://vuetifyjs.com" target="_blank">
+        <img src="../assets/vuetify.svg" class="logo-custom vuetify" alt="Vue logo-custom" />
+      </a>
+    </div>
 
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Learn more about IDE Support for Vue in the
-    <a
-      href="https://vuejs.org/guide/scaling-up/tooling.html#ide-support"
-      target="_blank"
-      >Vue Docs Scaling up Guide</a
-    >.
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+    <h1>{{ localdataStore.titulo }}</h1>
+    <div class="d-flex justify-content-center align-center flex-column gap-3">
+      <v-btn @click="">Vuetify button</v-btn>
+    </div>
+  </v-card>
 </template>
 
-<style scoped>
-.read-the-docs {
-  color: #888;
-}
-</style>
+
+<script>
+
+import { useLocaldataStore } from '../stores/localdata';
+
+export default {
+  data() {
+    return {
+      titulo: false,
+    };
+  },
+  setup() {
+    const localdataStore = useLocaldataStore()
+    return { localdataStore }
+  },
+  components: {
+  },
+  methods: {
+  },
+  mounted() {
+  },
+};
+</script>

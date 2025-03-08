@@ -1,12 +1,12 @@
-class Config:
-    pass
 
-class DevelopmentConfig(Config):
+import os
+
+class Config:
     
     DEBUG = True
 
     # SERVIDOR PRUEBAS
-    #SQLALCHEMY_DATABASE_URI = "mysql+pymysql://admin:eurocorp@192.168.10.245:3306/kiosko"
+    #SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_DATABASE')}"
 
     # DEV
     SQLALCHEMY_DATABASE_URI = "sqlite:///datos.db"
@@ -20,5 +20,5 @@ class DevelopmentConfig(Config):
 
 
 config = {
-    "development": DevelopmentConfig,
+    "config": Config,
 }

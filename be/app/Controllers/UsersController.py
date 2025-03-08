@@ -3,7 +3,7 @@ from . import ControllerObject
 import logging
 from app.Models.UsersAdmin import Users, Roles
 
-def PruebaKiosko():
+def Prueba():
     ret = ControllerObject()
     logger = logging.getLogger("modulos")
     logger.info(f"Entro correctamente al endpoint")
